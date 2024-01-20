@@ -5,8 +5,8 @@ import { initPlayer, loadAttack } from './scripts/player';
 import { initHitArea } from './scripts/hitMarker';
 import AudioManager from './main/audioManager';
 import { Background } from './scripts/background';
-
-const songs = ['ttls', 'hbd'];
+// ,
+const songs = ['ttls', 'hbd', 'ibs'];
 
 const DEFAULT_GAME_DATA = {
   score: 0,

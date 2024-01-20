@@ -26,6 +26,7 @@ export default class AudioManager {
     this.addInstrumentSound('piano', 'F4', 'F4.mp3');
     this.addInstrumentSound('piano', 'B4', 'B4.mp3');
     this.addInstrumentSound('piano', 'C5', 'C5.mp3');
+    this.addInstrumentSound('piano', 'G3', 'G3.mp3');
     this.addInstrumentSound('piano', 'BB4', 'Bb4.mp3');
   }
 
