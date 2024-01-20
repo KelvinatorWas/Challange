@@ -70,6 +70,8 @@ export const PlayButton = document.getElementById('play-btn');
 if (PlayButton) {
   PlayButton.addEventListener('click', (e) => {
     e.preventDefault();
+    audioManager.playSound("ui", 'select');
+    audioManager.stopSound("ui", 'select');
     GAME_DATA.hitType = 'TBD';
     if (!GAME_DATA.playing) {
       GAME_DATA.playing = true;

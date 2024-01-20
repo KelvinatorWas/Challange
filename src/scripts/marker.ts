@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { Container, Sprite } from "pixi.js";
 import { COLORS, SCORE_VALUES, scale } from "../consts/consts";
-import { GAME_DATA, hitareaParticles } from "../main";
+import { GAME_DATA, audioManager, hitareaParticles } from "../main";
 
 export type Marker = {
   marker: Sprite;
@@ -39,6 +39,8 @@ export const initMarker = (container: Container, pos: [x: number, y: number], ro
       if (this.pos[1] < 0) {
         GAME_DATA.score += SCORE_VALUES.missed;
         GAME_DATA.hitType = "MISSED!";
+        audioManager.playSound("piano", 'missed');
+        audioManager.stopSound("piano", 'missed');
         this.dead = true;
         dir.removeFromParent();
         hitareaParticles.createParticleSpark(

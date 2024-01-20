@@ -28,6 +28,11 @@ export default class AudioManager {
     this.addInstrumentSound('piano', 'C5', 'C5.mp3');
     this.addInstrumentSound('piano', 'G3', 'G3.mp3');
     this.addInstrumentSound('piano', 'BB4', 'Bb4.mp3');
+    this.addInstrumentSound('piano', 'missed', 'missed.mp3');
+
+    // UI
+    this.addInstrumentSound('ui', 'select', 'select.mp3');
+    console.log(this.allSounds);
   }
 
   private async addInstrumentSound(instrument:string, noteName:string, fileName:string) {
