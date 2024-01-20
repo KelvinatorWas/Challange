@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js';
 import './style.css';
 import gameLoop from './main/gameLoop';
-import { initPlayer } from './scripts/player';
+import { initPlayer, loadAttack } from './scripts/player';
 import { initHitArea } from './scripts/hitMarker';
 import AudioManager from './main/audioManager';
 import { Background } from './scripts/background';
@@ -9,6 +9,7 @@ import { Background } from './scripts/background';
 export const GAME_DATA = {
   score: 0,
   hitType: '',
+  playing: false,
 };
 
 const initGame = () => {
@@ -36,5 +37,17 @@ container.addChild(background.backgroundContainer);
 
 export const { dir: platform, particleSys: hitareaParticles } = initHitArea(container, [111, 9]);
 export const player = initPlayer(platform);
+
+export const PlayButton = document.getElementById('play-btn');
+if (PlayButton) {
+  PlayButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (!GAME_DATA.playing) {
+      GAME_DATA.playing = true;
+      PlayButton.classList.add('hide');
+      loadAttack(platform, player.hitmarkers);
+    }
+  });
+}
 
 gameLoop(app, container);

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { Container, Sprite } from "pixi.js";
 import { COLORS, SCORE_VALUES, scale } from "../consts/consts";
-import { GAME_DATA } from "../main";
+import { GAME_DATA, hitareaParticles } from "../main";
 
 export type Marker = {
   marker: Sprite;
@@ -42,6 +42,15 @@ export const initMarker = (container: Container, pos: [x: number, y: number], ro
         GAME_DATA.hitType = "MISSED!";
         this.dead = true;
         dir.removeFromParent();
+        hitareaParticles.createParticleSpark(
+          pos,
+          30,
+          0.5,
+          [-180, 180],
+          50,
+          COLORS.WHITE,
+          0.05,
+        );
       }
     },
   };

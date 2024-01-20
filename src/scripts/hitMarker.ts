@@ -5,6 +5,7 @@ import { Marker } from "./marker";
 import { GAME_DATA, audioManager, hitareaParticles } from "../main";
 import { COLORS, SCORE_VALUES, scale } from "../consts/consts";
 import { ParticleSystem } from "./particles";
+import { KeyboardEvents } from "../main/input";
 
 type HitMarkerKeys = 'up' | 'down' | 'left' | 'right';
 
@@ -111,6 +112,8 @@ const initHitMarker = (container: Container, pos: [x: number, y: number], rot = 
             );
 
             this.pressed = false;
+            KeyboardEvents[key].action = 'press';
+            KeyboardEvents[key].active = false;
           }
 
           if (marker.dead) {

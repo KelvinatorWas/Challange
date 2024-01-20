@@ -24,7 +24,7 @@ type Player = {
   active:boolean;
 }
 
-const loadAttack = (container:Container, hitmarkers:PlayerHitMarkers) => {
+export const loadAttack = (container:Container, hitmarkers:PlayerHitMarkers) => {
   const { distance, notes } = Star;
   let y = 32;
   for (const noteList of notes) {
