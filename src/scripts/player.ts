@@ -84,9 +84,10 @@ export const initPlayer = (container: Container, instrument = 'piano'): Player =
       updateHitMarker("right");
       updateHitMarker("down");
 
-      if (KeyboardEvents.space.action === "press") {
-        loadAttack(container, this.hitmarkers);
-      }
+      // DEBUG Music
+      // if (KeyboardEvents.space.action === "press") {
+      // loadAttack(container, this.hitmarkers);
+      // }
     },
   };
 };
