@@ -12,9 +12,50 @@ body {
   align-items: center;
   background-color: #301561;
 }
+.game {
+  display: flex;
+  flex-direction: column;
+}
+.data {
+  display: flex;
+  align-self: flex-start;
+  flex-grow: 0 1;
+  column-gap: 5px;
+  margin-bottom: 1rem;
+}
+#score {
+  font-family: 'Pixelify Sans';
+  font-size: x-large;
+  color: #f28943;
+  background-color: #231d30;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 2px solid #cf5959;
+}
+
+#hit-type {
+  font-family: 'Pixelify Sans';
+  font-size: x-large;
+  color: #f28943;
+  background-color: #231d30;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 2px solid #cf5959;
+}
 
 #game-canvas {
   image-rendering: pixelated;
   border: 10px solid #35357a;
   border-radius: 10px;
+}
+
+.controls {
+  margin-top: 1rem;
+  font-family: 'Pixelify Sans';
+  font-size: x-large;
+  color: #f28943;
+  background-color: #231d30;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 2px solid #cf5959;
 }

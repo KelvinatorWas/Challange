@@ -20,7 +20,6 @@ type PlayerHitMarkers = {
 type Player = {
   hitmarkers: PlayerHitMarkers,
   update: (dt:number) => void,
-  sounds:Set<string>;
   instrument: string;
   active:boolean;
 }
@@ -48,10 +47,11 @@ const loadAttack = (container:Container, hitmarkers:PlayerHitMarkers) => {
 };
 
 export const initPlayer = (container: Container, instrument = 'piano'): Player => {
-  const left = initHitMarker(container, [15, 15], 270, "left", "BLUE");
-  const down = initHitMarker(container, [33, 15], 180, "down", "RED");
-  const up = initHitMarker(container, [50, 15], 0, "up", "GREEN");
-  const right = initHitMarker(container, [68, 15], 90, "right", "YELLLOW");
+  const y = 20;
+  const left = initHitMarker(container, [15, y], 270, "left", "BLUE");
+  const down = initHitMarker(container, [33, y], 180, "down", "RED");
+  const up = initHitMarker(container, [50, y], 0, "up", "GREEN");
+  const right = initHitMarker(container, [68, y], 90, "right", "YELLLOW");
   return {
     hitmarkers: {
       up,
@@ -61,7 +61,6 @@ export const initPlayer = (container: Container, instrument = 'piano'): Player =
     },
     instrument,
     active: true,
-    sounds: new Set(),
     update(dt:number) {
       if (!this.active) return;
 

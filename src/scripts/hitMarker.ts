@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { Container, Sprite } from "pixi.js";
+import { Container, Sprite, Text } from "pixi.js";
 import { scalePos } from "../utils/scalePos";
 import { Marker } from "./marker";
-import { audioManager, hitareaParticles } from "../main";
-import { COLORS, scale } from "../consts/consts";
+import { GAME_DATA, audioManager, hitareaParticles } from "../main";
+import { COLORS, SCORE_VALUES, scale } from "../consts/consts";
 import { ParticleSystem } from "./particles";
 
 type HitMarkerKeys = 'up' | 'down' | 'left' | 'right';
@@ -16,11 +16,11 @@ export type HitMarker = {
   scale: number;
   rot: number;
   pressed: boolean;
-  markers:Marker[];
+  markers: Marker[];
   key: HitMarkerKeys;
   color: HitColors;
   active: () => void;
-  update: (dt:number) => void;
+  update: (dt: number) => void;
 };
 
 export const initHitArea = (container: Container, pos: [x: number, y: number]) => {
@@ -36,12 +36,13 @@ export const initHitArea = (container: Container, pos: [x: number, y: number]) =
   container.sortableChildren = true;
 
   const particleSys = new ParticleSystem();
+  particleSys.particleContainer.zIndex = 3;
   dir.addChild(particleSys.particleContainer);
 
   return { dir, particleSys };
 };
 
-const initHitMarker = (container: Container, pos: [x: number, y: number], rot = 0, key:HitMarkerKeys = 'down', color:HitColors = 'GREEN'): HitMarker => {
+const initHitMarker = (container: Container, pos: [x: number, y: number], rot = 0, key: HitMarkerKeys = 'down', color: HitColors = 'GREEN'): HitMarker => {
   const dir = Sprite.from('./src/assets/dir.png');
   const sPos = scalePos(pos[0], pos[1], 1);
   dir.tint = COLORS[color];
@@ -72,7 +73,7 @@ const initHitMarker = (container: Container, pos: [x: number, y: number], rot = 
         this.scale = 1;
       }
     },
-    update(dt:number) {
+    update(dt: number) {
       this.hitmarker.scale.x = this.scale;
       this.hitmarker.scale.y = this.scale;
 
@@ -81,13 +82,33 @@ const initHitMarker = (container: Container, pos: [x: number, y: number], rot = 
           marker.update(dt);
           const dist = Math.floor(marker.pos[1]) - Math.floor(this.pos[1]);
           // console.log(dist);
-          if ((dist < 10 && dist >= -10) && this.pressed) {
-            if (dist < 3 && dist > -3) console.log("perfect");
+          if ((dist < 10 && dist >= -15) && this.pressed) {
+            if (dist < 3 && dist > -3) {
+              GAME_DATA.score += SCORE_VALUES.perfect;
+              GAME_DATA.hitType = "PERFECT!";
+            } else if (dist < 5 && dist > -5) {
+              GAME_DATA.score += SCORE_VALUES.good;
+              GAME_DATA.hitType = "GOOD!";
+            } else if (dist < 10 && dist > -10) {
+              GAME_DATA.score += SCORE_VALUES.early;
+              GAME_DATA.hitType = "EARLY!";
+            } else if (dist < 0 && dist > -15) {
+              GAME_DATA.score += SCORE_VALUES.bad;
+              GAME_DATA.hitType = "BAD!";
+            }
             audioManager.playSound("piano", marker.sound);
             delete this.markers[index];
             marker.marker.removeFromParent();
             audioManager.stopSound("piano", marker.sound);
-            hitareaParticles.createParticleSpark(sPos, 30, 0.5, 180, 50, COLORS[color], 0.05);
+            hitareaParticles.createParticleSpark(
+              sPos,
+              30,
+              0.5,
+              [-180, 180],
+              50,
+              COLORS[color],
+              0.05,
+            );
 
             this.pressed = false;
           }

@@ -43,9 +43,9 @@ export class ParticleSystem {
   }
 
   // eslint-disable-next-line max-len
-  createParticleSpark(pos: Vec2, amount: number, scale = 1, angle = 60, decay = 100, color = COLORS.WHITE, speed = 0.1) {
+  createParticleSpark(pos: Vec2, amount: number, scale = 1, angle:Vec2 = [-60, 60], decay = 100, color = COLORS.WHITE, speed = 0.1) {
     for (let i = 0; i < amount; i++) {
-      const newAngle = randomInt(-angle, angle);
+      const newAngle = randomInt(angle[0], angle[1]);
       const newDecay = randomInt(1, decay) / 100;
       this.createParticle(pos, scale, newAngle, newDecay, color, speed);
     }

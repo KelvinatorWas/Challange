@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { Container, Sprite } from "pixi.js";
-import { COLORS, scale } from "../consts/consts";
+import { COLORS, SCORE_VALUES, scale } from "../consts/consts";
+import { GAME_DATA } from "../main";
 
 export type Marker = {
   marker: Sprite;
@@ -36,7 +37,9 @@ export const initMarker = (container: Container, pos: [x: number, y: number], ro
       this.marker.position.y -= 0.9 * dt;
       this.pos[1] = this.marker.position.y;
 
-      if (this.pos[1] < -100) {
+      if (this.pos[1] < 0) {
+        GAME_DATA.score += SCORE_VALUES.missed;
+        GAME_DATA.hitType = "MISSED!";
         this.dead = true;
         dir.removeFromParent();
       }

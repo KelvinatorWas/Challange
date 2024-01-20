@@ -4,6 +4,12 @@ import gameLoop from './main/gameLoop';
 import { initPlayer } from './scripts/player';
 import { initHitArea } from './scripts/hitMarker';
 import AudioManager from './main/audioManager';
+import { Background } from './scripts/background';
+
+export const GAME_DATA = {
+  score: 0,
+  hitType: '',
+};
 
 const initGame = () => {
   const app = new PIXI.Application({
@@ -25,8 +31,10 @@ const initGame = () => {
 
 export const audioManager = new AudioManager();
 const { app, container } = initGame();
+export const background = new Background([1280, 720]);
+container.addChild(background.backgroundContainer);
 
-export const { dir: platform, particleSys: hitareaParticles } = initHitArea(container, [111, 16]);
+export const { dir: platform, particleSys: hitareaParticles } = initHitArea(container, [111, 9]);
 export const player = initPlayer(platform);
 
 gameLoop(app, container);
