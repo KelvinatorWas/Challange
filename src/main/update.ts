@@ -14,6 +14,7 @@ const score = document.getElementById("score");
 const hscore = document.getElementById("highscore");
 const noteAmount = document.getElementById("current-note-amount");
 const hitType = document.getElementById("hit-type");
+const songsLeft = document.getElementById("songs-left");
 
 const update = (dt: number) => {
   platform.sortChildren();
@@ -38,11 +39,12 @@ const update = (dt: number) => {
     if (PlayButton) PlayButton.classList.remove('hide');
   }
 
-  if (score && hitType && noteAmount && hscore) {
+  if (score && hitType && noteAmount && hscore && songsLeft) {
     if (+score.innerText.slice(7) !== GAME_DATA.score) score.innerText = `Score: ${GAME_DATA.score}`;
     if (+hscore.innerText.slice(11) !== GAME_DATA.highscore) hscore.innerText = `Highscore: ${GAME_DATA.highscore}`;
     if (hitType.innerText !== GAME_DATA.hitType && GAME_DATA.hitType !== '') hitType.innerText = `${GAME_DATA.hitType}`;
     if (+noteAmount.innerText.slice(12) !== GAME_DATA.allCurrentNotes) noteAmount.innerText = `Notes Left: ${GAME_DATA.allCurrentNotes}`;
+    if (+songsLeft.innerText.slice(12) !== GAME_DATA.songs.length) songsLeft.innerText = `Songs Left: ${GAME_DATA.songs.length}`;
   }
 };
 

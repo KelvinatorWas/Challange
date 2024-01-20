@@ -69,11 +69,10 @@ export const player = initPlayer(platform);
 export const PlayButton = document.getElementById('play-btn');
 if (PlayButton) {
   PlayButton.addEventListener('click', (e) => {
-    console.log('člick');
     e.preventDefault();
+    GAME_DATA.hitType = 'TBD';
     if (!GAME_DATA.playing) {
       GAME_DATA.playing = true;
-      console.log("playing", JSON.stringify(GAME_DATA));
       PlayButton.classList.add('hide');
       loadAttack(platform, player.hitmarkers);
     }

@@ -4,7 +4,7 @@ import initHitMarker, { HitMarker } from "./hitMarker";
 import { KeyboardEvents } from "../main/input";
 import { initMarker } from "./marker";
 import { Vec2, randomInt } from "../utils/extraMath";
-import { HappyBDay, SONGS, Star } from "../utils/attacks";
+import { SONGS } from "../utils/attacks";
 import { GAME_DATA } from "../main";
 
 type HitMarkerKeys = 'up' | 'down' | 'left' | 'right';

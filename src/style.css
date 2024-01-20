@@ -21,8 +21,20 @@ body {
   align-self: flex-start;
   column-gap: 5px;
   margin-bottom: 1rem;
+  width: 100%;
 }
+
 #score {
+  font-family: 'Pixelify Sans';
+  font-size: x-large;
+  color: #f28943;
+  background-color: #231d30;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 2px solid #cf5959;
+}
+
+#songs-left {
   font-family: 'Pixelify Sans';
   font-size: x-large;
   color: #f28943;
@@ -69,6 +81,14 @@ body {
   border: 2px solid #cf5959;
 }
 
+.button-area {
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  justify-content: flex-end;
+
+}
+
 #play-btn {
   font-family: 'Pixelify Sans';
   font-size: x-large;
@@ -77,7 +97,12 @@ body {
   padding: 8px 16px;
   border-radius: 5px;
   border: 2px solid #bccfd6;
-  align-self: center;
+
+}
+
+#play-btn:hover {
+  color: #bccfd6;
+  border: 2px solid #f28943;
 }
 
 .hide {
