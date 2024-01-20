@@ -72,7 +72,7 @@ export class ParticleSystem {
         spark.scale -= decay * dt;
       } else {
         spark.sprite.removeFromParent();
-        delete this.particles[index];
+        this.particles.splice(index, 1);
       }
     });
   }

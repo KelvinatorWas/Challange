@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Container, Sprite, Text } from "pixi.js";
+import { Container, Sprite } from "pixi.js";
 import { scalePos } from "../utils/scalePos";
 import { Marker } from "./marker";
 import { GAME_DATA, audioManager, hitareaParticles } from "../main";

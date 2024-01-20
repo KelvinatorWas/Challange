@@ -32,6 +32,16 @@ body {
   border: 2px solid #cf5959;
 }
 
+#highscore {
+  font-family: 'Pixelify Sans';
+  font-size: x-large;
+  color: #f28943;
+  background-color: #231d30;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 2px solid #cf5959;
+}
+
 #hit-type {
   font-family: 'Pixelify Sans';
   font-size: x-large;

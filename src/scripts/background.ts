@@ -3,6 +3,7 @@ import { Container, Graphics } from "pixi.js";
 import { Vec2, direct, randomInt } from "../utils/extraMath";
 import { COLORS } from "../consts/consts";
 import { ParticleSystem } from "./particles";
+import { GAME_DATA } from "../main";
 
 type BackgroundParticle = {
   sprite: Graphics,
@@ -62,10 +63,18 @@ export class Background {
     const posx = randomInt(0, 1280);
     const posy = randomInt(0, 720);
 
-    this.particleSystem.createParticleSpark([posx, 0], 1, 2, [-180, 180], 100, COLORS.BLACK, 0.01);
-    this.particleSystem.createParticleSpark([posx, 720], 1, 2, [-90, 90], 100, COLORS.BLACK, 0.01);
-    this.particleSystem.createParticleSpark([0, posy], 1, 2, [0, 180], 100, COLORS.BLACK, 0.01);
-    this.particleSystem.createParticleSpark([1280, posy], 1, 2, [-180, 0], 100, COLORS.BLACK, 0.01);
+    let color = COLORS.BLACK;
+
+    if (GAME_DATA.hitType === 'YOU WON!!') {
+      const keys = Object.keys(COLORS);
+      const key = randomInt(0, keys.length - 1);
+      color = COLORS[keys[key] as keyof typeof COLORS];
+    }
+
+    this.particleSystem.createParticleSpark([posx, 0], 1, 2, [-180, 180], 100, color, 0.01);
+    this.particleSystem.createParticleSpark([posx, 720], 1, 2, [-90, 90], 100, color, 0.01);
+    this.particleSystem.createParticleSpark([0, posy], 1, 2, [0, 180], 100, color, 0.01);
+    this.particleSystem.createParticleSpark([1280, posy], 1, 2, [-180, 0], 100, color, 0.01);
 
     this.particles.forEach((block) => {
       const {

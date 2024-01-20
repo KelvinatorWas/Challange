@@ -20,23 +20,23 @@ type PlayerHitMarkers = {
 
 type Player = {
   hitmarkers: PlayerHitMarkers,
-  update: (dt:number) => void,
+  update: (dt: number) => void,
   instrument: string;
-  active:boolean;
+  active: boolean;
 }
 
-export const loadAttack = (container:Container, hitmarkers:PlayerHitMarkers) => {
-  const song = randomInt(0, GAME_DATA.songs.length + 1);
-  console.log(song);
+export const loadAttack = (container: Container, hitmarkers: PlayerHitMarkers) => {
+  if (GAME_DATA.playing && !GAME_DATA.songs.length) return;
+  const song = randomInt(0, GAME_DATA.songs.length - 1);
   const { distance, notes } = SONGS[GAME_DATA.songs[song] as keyof typeof SONGS];
   let y = 32;
 
-  delete GAME_DATA.songs[song];
+  GAME_DATA.songs.splice(song, 1);
 
   for (const noteList of notes) {
     for (const note of noteList) {
       const { pos, rot, color } = hitmarkers[note.hitmarker];
-      const markerPos:Vec2 = [pos[0], pos[1] + y];
+      const markerPos: Vec2 = [pos[0], pos[1] + y];
       hitmarkers[note.hitmarker].markers.push(initMarker(
         container,
         markerPos,
@@ -68,7 +68,7 @@ export const initPlayer = (container: Container, instrument = 'piano'): Player =
     },
     instrument,
     active: true,
-    update(dt:number) {
+    update(dt: number) {
       if (!this.active) return;
 
       const updateHitMarker = (key: HitMarkerKeys) => {

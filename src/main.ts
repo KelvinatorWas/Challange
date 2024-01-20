@@ -6,15 +6,32 @@ import { initHitArea } from './scripts/hitMarker';
 import AudioManager from './main/audioManager';
 import { Background } from './scripts/background';
 
-export const DEFAULT_GAME_DATA = {
+const songs = ['ttls', 'hbd'];
+
+const DEFAULT_GAME_DATA = {
   score: 0,
   hitType: '',
   playing: false,
   allCurrentNotes: 0,
-  songs: ['ttls', 'hbd'],
+  songs: [...songs],
+  highscore: 0,
 };
 
 export const GAME_DATA = { ...DEFAULT_GAME_DATA };
+
+export const restartGameData = () => {
+  const {
+    allCurrentNotes,
+    hitType,
+    score,
+    playing,
+  } = { ...DEFAULT_GAME_DATA };
+  GAME_DATA.allCurrentNotes = allCurrentNotes;
+  GAME_DATA.hitType = hitType;
+  GAME_DATA.songs = [...songs];
+  GAME_DATA.score = score;
+  GAME_DATA.playing = playing;
+};
 
 const initGame = () => {
   const app = new PIXI.Application({
@@ -31,6 +48,13 @@ const initGame = () => {
   app.stage.addChild(container);
   PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.NEAREST;
 
+  const hscore = localStorage.getItem('hscore');
+  if (!hscore) {
+    localStorage.setItem('hscore', JSON.stringify(0));
+  } else {
+    GAME_DATA.highscore = +hscore;
+  }
+
   return { app, container };
 };
 
@@ -45,9 +69,11 @@ export const player = initPlayer(platform);
 export const PlayButton = document.getElementById('play-btn');
 if (PlayButton) {
   PlayButton.addEventListener('click', (e) => {
+    console.log('člick');
     e.preventDefault();
     if (!GAME_DATA.playing) {
       GAME_DATA.playing = true;
+      console.log("playing", JSON.stringify(GAME_DATA));
       PlayButton.classList.add('hide');
       loadAttack(platform, player.hitmarkers);
     }
