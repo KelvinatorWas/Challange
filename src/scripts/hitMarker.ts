@@ -114,6 +114,7 @@ const initHitMarker = (container: Container, pos: [x: number, y: number], rot = 
             this.pressed = false;
             KeyboardEvents[key].action = 'press';
             KeyboardEvents[key].active = false;
+            GAME_DATA.allCurrentNotes -= 1;
           }
 
           if (marker.dead) {

@@ -6,11 +6,15 @@ import { initHitArea } from './scripts/hitMarker';
 import AudioManager from './main/audioManager';
 import { Background } from './scripts/background';
 
-export const GAME_DATA = {
+export const DEFAULT_GAME_DATA = {
   score: 0,
   hitType: '',
   playing: false,
+  allCurrentNotes: 0,
+  songs: ['ttls', 'hbd'],
 };
+
+export const GAME_DATA = { ...DEFAULT_GAME_DATA };
 
 const initGame = () => {
   const app = new PIXI.Application({

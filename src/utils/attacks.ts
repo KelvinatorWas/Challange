@@ -108,3 +108,124 @@ export const Star: Attack = {
     ],
   ],
 };
+
+export const HappyBDay: Attack = {
+  distance: len(1),
+  notes: [
+    [
+      { note: 'C4', lenght: len(1), hitmarker: 'left' },
+      { note: 'C4', lenght: len(1), hitmarker: 'left' },
+    ],
+    [
+      { note: 'D4', lenght: len(1), hitmarker: 'right' },
+      { note: 'C4', lenght: len(1), hitmarker: 'left' },
+    ],
+    [
+      { note: 'F4', lenght: len(1), hitmarker: 'down' },
+    ],
+    [
+      { note: 'E4', lenght: len(1), hitmarker: 'up' },
+    ],
+    [
+      { note: 'C4', lenght: len(1), hitmarker: 'left' },
+      { note: 'C4', lenght: len(1), hitmarker: 'left' },
+    ],
+    [
+      { note: 'D4', lenght: len(1), hitmarker: 'right' },
+      { note: 'C4', lenght: len(1), hitmarker: 'left' },
+    ],
+    [
+      { note: 'G4', lenght: len(1.5), hitmarker: 'left' },
+      { note: 'F4', lenght: len(1), hitmarker: 'up' },
+    ],
+    [
+      { note: 'C4', lenght: len(1), hitmarker: 'right' },
+      { note: 'C4', lenght: len(1), hitmarker: 'right' },
+    ],
+    [
+      { note: 'C5', lenght: len(1), hitmarker: 'left' },
+    ],
+    [
+      { note: 'A4', lenght: len(1.5), hitmarker: 'up' },
+      { note: 'F4', lenght: len(1), hitmarker: 'down' },
+    ],
+    [
+      { note: 'E4', lenght: len(1.5), hitmarker: 'down' },
+      { note: 'D4', lenght: len(1), hitmarker: 'right' },
+    ],
+    [
+      { note: 'BB4', lenght: len(1), hitmarker: 'left' },
+      { note: 'BB4', lenght: len(1.5), hitmarker: 'left' },
+    ],
+    [
+      { note: 'A4', lenght: len(1), hitmarker: 'right' },
+    ],
+    [
+      { note: 'F4', lenght: len(1.5), hitmarker: 'down' },
+      { note: 'G4', lenght: len(1), hitmarker: 'up' },
+    ],
+    [
+      { note: 'F4', lenght: len(1), hitmarker: 'down' },
+    ],
+    [
+      { note: 'C4', lenght: len(1), hitmarker: 'left' },
+      { note: 'C4', lenght: len(1), hitmarker: 'left' },
+    ],
+    [
+      { note: 'D4', lenght: len(1), hitmarker: 'right' },
+      { note: 'C4', lenght: len(1), hitmarker: 'left' },
+    ],
+    [
+      { note: 'F4', lenght: len(1), hitmarker: 'down' },
+    ],
+    [
+      { note: 'E4', lenght: len(1), hitmarker: 'up' },
+    ],
+    [
+      { note: 'C4', lenght: len(1), hitmarker: 'left' },
+      { note: 'C4', lenght: len(1), hitmarker: 'left' },
+    ],
+    [
+      { note: 'D4', lenght: len(1), hitmarker: 'right' },
+      { note: 'C4', lenght: len(1), hitmarker: 'left' },
+    ],
+    [
+      { note: 'G4', lenght: len(1.5), hitmarker: 'left' },
+      { note: 'F4', lenght: len(1), hitmarker: 'up' },
+    ],
+    [
+      { note: 'C4', lenght: len(1), hitmarker: 'right' },
+      { note: 'C4', lenght: len(1), hitmarker: 'right' },
+    ],
+    [
+      { note: 'C5', lenght: len(1), hitmarker: 'left' },
+    ],
+    [
+      { note: 'A4', lenght: len(1.5), hitmarker: 'up' },
+      { note: 'F4', lenght: len(1), hitmarker: 'down' },
+    ],
+    [
+      { note: 'E4', lenght: len(1.5), hitmarker: 'down' },
+      { note: 'D4', lenght: len(1), hitmarker: 'right' },
+    ],
+    [
+      { note: 'BB4', lenght: len(1), hitmarker: 'left' },
+      { note: 'BB4', lenght: len(1), hitmarker: 'left' },
+    ],
+    [
+      { note: 'A4', lenght: len(1), hitmarker: 'right' },
+    ],
+    [
+      { note: 'F4', lenght: len(1.5), hitmarker: 'down' },
+      { note: 'G4', lenght: len(1), hitmarker: 'up' },
+    ],
+    [
+      { note: 'F4', lenght: len(1), hitmarker: 'down' },
+    ],
+  ],
+};
+
+export const SONGS = {
+  ttls: Star,
+  hbd: HappyBDay,
+};

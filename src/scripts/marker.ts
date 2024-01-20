@@ -23,7 +23,6 @@ export const initMarker = (container: Container, pos: [x: number, y: number], ro
   dir.angle = rot;
   dir.scale.x = 1;
   dir.scale.y = 1;
-
   container.addChild(dir);
 
   return {
@@ -51,6 +50,7 @@ export const initMarker = (container: Container, pos: [x: number, y: number], ro
           COLORS.WHITE,
           0.05,
         );
+        GAME_DATA.allCurrentNotes -= 1;
       }
     },
   };

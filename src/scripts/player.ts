@@ -3,8 +3,9 @@ import { Container } from "pixi.js";
 import initHitMarker, { HitMarker } from "./hitMarker";
 import { KeyboardEvents } from "../main/input";
 import { initMarker } from "./marker";
-import { Vec2 } from "../utils/extraMath";
-import { Star } from "../utils/attacks";
+import { Vec2, randomInt } from "../utils/extraMath";
+import { HappyBDay, SONGS, Star } from "../utils/attacks";
+import { GAME_DATA } from "../main";
 
 type HitMarkerKeys = 'up' | 'down' | 'left' | 'right';
 
@@ -25,8 +26,13 @@ type Player = {
 }
 
 export const loadAttack = (container:Container, hitmarkers:PlayerHitMarkers) => {
-  const { distance, notes } = Star;
+  const song = randomInt(0, GAME_DATA.songs.length + 1);
+  console.log(song);
+  const { distance, notes } = SONGS[GAME_DATA.songs[song] as keyof typeof SONGS];
   let y = 32;
+
+  delete GAME_DATA.songs[song];
+
   for (const noteList of notes) {
     for (const note of noteList) {
       const { pos, rot, color } = hitmarkers[note.hitmarker];
@@ -39,6 +45,7 @@ export const loadAttack = (container:Container, hitmarkers:PlayerHitMarkers) => 
         color,
       ));
 
+      GAME_DATA.allCurrentNotes += 1;
       y += note.lenght;
     }
 
