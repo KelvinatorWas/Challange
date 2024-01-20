@@ -8,7 +8,16 @@
     <title>Music Instrument</title>
   </head>
   <body>
-    <canvas id="game-canvas"></canvas>
+    <div class="game">
+      <div class="data">
+        <h1 id="score">Score: 0</h1>
+        <h1 id="hit-type">TBD</h1>
+      </div>
+      <canvas id="game-canvas"></canvas>
+      <div class="controls">
+        To control the arrows press: W, A, S, D
+      </div>
+    </div>
     
     <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.x/dist/pixi.min.js"></script>
     <script type="module" src="/src/main.ts"></script>
