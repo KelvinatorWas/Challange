@@ -1,7 +1,9 @@
 # Rythm / Guitar hero-esque small game.
 
-- 💻 Technology: Typescript, PIXIJS, CSS, HTML, Vite.
-- 🕐 Time: Less than ~12h;
+- 💻 Technology: Typescript, PixiJS, CSS, HTML, Vite.
+- 🕐 Time: Less than ~12h.
+- 🥇 Got First Place for the challange.
+  
 ## To run:
 Go to the file path where the ``package.json`` file is locatated, aka the base directory.
 Open the console and write ``npm i`` or ``npm install``.
