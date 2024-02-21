@@ -4,7 +4,7 @@
 - 🕐 Time: Less than ~12h.
 - 🥇 Got First Place for the challange.
   
-## To run:
+## To run
 Go to the file path where the ``package.json`` file is locatated, aka the base directory.
 Open the console and write ``npm i`` or ``npm install``.
 When all the packages are installed, next step is to run dev mode: ``npm run dev``.
